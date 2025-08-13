@@ -1,39 +1,111 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Happy Independence Day Offer</title>
-<style>
-  body {font-family: Arial,sans-serif;margin:0;padding:0;background:linear-gradient(to bottom,#ff9933,white,#138808);text-align:center;color:#222;}
-  #rechargeSuccessWindow {background-color:#007b00cc;color:white;font-weight:bold;border-radius:8px;padding:10px 20px;max-width:350px;margin:20px auto 10px;font-size:1.2em;box-shadow:0 0 10px #006400;font-family:'Arial Black',Arial,sans-serif;animation:fadeInOut 3s ease-in-out infinite;}
-  @keyframes fadeInOut {0%,100%{opacity:0;}50%{opacity:1;}}
-  .top-images {display:flex;justify-content:center;gap:20px;padding:10px 0;background:white;align-items:center;flex-wrap:wrap;}
-  .top-images img {max-height:80px;width:auto;}
-  .animated-greeting {font-size:2.5em;font-weight:bold;color:#006400;animation:pulseColor 2.5s infinite alternate;margin:20px 0 10px;font-family:'Arial Black',Arial,sans-serif;white-space:nowrap;}
-  @keyframes pulseColor {0%{color:#006400;text-shadow:0 0 5px #138808;}50%{color:#ff6600;text-shadow:0 0 15px #ff9933;}100%{color:#006400;text-shadow:0 0 5px #138808;}}
-  header {padding:0 20px 20px;}
-  .big-bold {font-size:2em;font-weight:bold;color:#ff0000;margin-top:0;}
-  .notice {font-size:1.2em;margin-top:5px;color:#333;}
-  a.share-btn, button {padding:12px 20px;background:#25d366;border-radius:8px;color:white;font-size:1em;cursor:pointer;margin-top:15px;display:inline-block;text-decoration:none;transition:background 0.3s;border:none;}
-  a.share-btn:hover, button:hover {background:#1ebd5a;}
-  a.share-btn[disabled], button:disabled {background:#888;pointer-events:none;cursor:not-allowed;}
-  #rechargeSection,#progressSection,#whatsappSection {margin-top:20px;padding:10px;background:rgba(255,255,255,0.9);border-radius:10px;max-width:350px;margin-left:auto;margin-right:auto;box-shadow:0px 4px 6px rgba(0,0,0,0.2);}
-  #progressBarContainer {width:100%;background-color:#ddd;border-radius:20px;overflow:hidden;margin:20px 0;height:25px;}
-  #progressBar {height:100%;width:0%;background-color:#25d366;text-align:center;color:white;line-height:25px;font-weight:bold;transition:width 0.3s;}
-  label {display:block;margin-top:10px;font-weight:bold;}
-  input, select {padding:10px;width:100%;margin-top:5px;border:1px solid #ccc;border-radius:6px;font-size:1em;box-sizing:border-box;}
-  #animationDiv {margin-top:20px;font-size:1.2em;font-weight:bold;color:green;}
-  #delayBox {border:2px solid red;background:#fff3f3;color:red;font-weight:bold;padding:10px;margin-top:15px;border-radius:8px;max-width:350px;margin-left:auto;margin-right:auto;}
-  #shareNotice {color:red;font-weight:bold;font-size:1.5em;margin-bottom:10px;}
-  #shareScore {color:red;font-weight:bold;font-size:1.25em;margin-top:5px;}
-  #countdownTimer {font-size:1.25em;font-weight:bold;color:#ff0000;margin-top:10px;}
-</style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Independence Day Offer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0; padding: 0;
+      background: linear-gradient(to bottom, #ff9933, white, #138808);
+      text-align: center;
+      color: #222;
+    }
+    .animated-greeting {
+      font-size: 2.2em;
+      font-weight: bold;
+      color: #006400;
+      animation: pulseColor 2.5s infinite alternate;
+      margin: 30px 0 5px 0;
+      font-family: 'Arial Black', Arial, sans-serif;
+      line-height: 1.15;
+      word-break: break-word;
+      white-space: normal;
+      letter-spacing: .5px;
+    }
+    @keyframes pulseColor {
+      0% { color: #006400; text-shadow: 0 0 5px #138808; }
+      50% { color: #ff6600; text-shadow: 0 0 18px #ff9933; }
+      100% { color: #006400;  text-shadow: 0 0 5px #138808; }
+    }
+    .big-bold {
+      font-size: 1.5em;
+      font-weight: bold;
+      color: #ff0000;
+      line-height: 1.12;
+      margin: 0 0 10px 0;
+      word-break: break-word;
+      white-space: normal;
+    }
+    .notice { font-size: 1em; margin-top: 5px; color: #333; }
+    @media (max-width:600px) {
+      .animated-greeting { font-size: 1.1em; }
+      .big-bold { font-size: 1em; }
+    }
+    #rechargeSuccessWindow {
+      background: #007b00cc;
+      color: #fff;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 10px 16px;
+      max-width: 350px;
+      margin: 16px auto 8px auto;
+      font-size: 1.08em;
+      box-shadow: 0 0 10px #006400;
+      font-family:'Arial Black',Arial,sans-serif;
+      animation: fadeInOut 3s ease-in-out infinite;
+    }
+    @keyframes fadeInOut {0%,100%{opacity:.66;}50%{opacity:1;}}
+    .top-images {
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      padding: 10px 0;
+      background: white;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .top-images img {max-height: 70px; width: auto;}
+    a.share-btn, button {
+      padding:12px 20px;
+      background:#25d366;
+      border-radius:8px;
+      color:white;
+      font-size:1em;
+      cursor:pointer;
+      margin-top:15px;
+      display:inline-block;
+      text-decoration:none;
+      transition:background 0.3s;
+      border:none;
+    }
+    a.share-btn:hover, button:hover {background:#1ebd5a;}
+    a.share-btn[disabled], button:disabled {background:#888;pointer-events:none;cursor:not-allowed;}
+    #rechargeSection,#progressSection,#whatsappSection {
+      margin-top:18px;
+      padding:10px;
+      background:rgba(255,255,255,.93);
+      border-radius:10px;
+      max-width:350px;
+      margin-left:auto; margin-right:auto;
+      box-shadow:0px 4px 6px rgba(0,0,0,.14);
+    }
+    #progressBarContainer {width:100%;background:#ddd;border-radius:20px;overflow:hidden;margin:20px 0;height:25px;}
+    #progressBar {height:100%;width:0%;background:#25d366;text-align:center;color:#fff;line-height:25px;font-weight:bold;transition:width 0.3s;}
+    label {display:block;margin-top:10px;font-weight:bold;}
+    input, select {padding:10px;width:100%;margin-top:5px;border:1px solid #ccc;border-radius:6px;font-size:1em;box-sizing:border-box;}
+    #animationDiv {margin-top:20px;font-size:1.1em;font-weight:bold;color:green;}
+    #delayBox {border:2px solid red;background:#fff3f3;color:red;font-weight:bold;padding:10px;margin-top:15px;border-radius:8px;max-width:350px;margin-left:auto;margin-right:auto;}
+    #shareNotice {color:red;font-weight:bold;font-size:1.15em;margin-bottom:10px;}
+    #shareScore {color:red;font-weight:bold;font-size:1.05em;margin-top:5px;}
+    #countdownTimer {font-size:1.08em;font-weight:bold;color:#ff0000;margin-top:10px;}
+  </style>
 </head>
 <body>
 
 <!-- Banner Ad Top -->
-<div id="bannerAdTop" style="display:flex;justify-content:center;align-items:center;margin:10px 0;">
+<div style="display:flex;justify-content:center;align-items:center;margin:10px 0;">
   <script type="text/javascript">
    atOptions = {
     'key' : 'd9ab5ec2ffd7f66e8a0ea53e2746f664',
@@ -46,21 +118,19 @@
   <script type="text/javascript" src="//powderencouraged.com/d9ab5ec2ffd7f66e8a0ea53e2746f664/invoke.js"></script>
 </div>
 
+<!-- Popunder Ad Script -->
+<script type="text/javascript" src="http://powderencouraged.com/43/46/d0/4346d01e46c914228b56d42b08c87fd3.js"></script>
+
 <!-- Background Music -->
 <audio id="backgroundMusic" src="aug.mp3" autoplay loop muted></audio>
 <script>
   const backgroundMusic = document.getElementById('backgroundMusic');
   function oneTimeUnmute() {
-    if (backgroundMusic.muted) {
-      backgroundMusic.muted = false;
-    }
+    if (backgroundMusic.muted) backgroundMusic.muted = false;
     document.body.removeEventListener('click', oneTimeUnmute);
   }
   document.body.addEventListener('click', oneTimeUnmute);
 </script>
-
-<!-- Popunder Ad Script -->
-<script type="text/javascript" src="http://powderencouraged.com/43/46/d0/4346d01e46c914228b56d42b08c87fd3.js"></script>
 
 <div id="rechargeSuccessWindow">Recharge Successfully On 996xxx7575</div>
 
@@ -73,15 +143,21 @@
 </div>
 
 <header>
-  <div class="animated-greeting">”9½5 HAPPY INDEPENDENCE DAY! ”9½5</div>
-  <div class="big-bold">”9½5 You Won 6´4299 Recharge ”9½5</div>
-  <div class="notice">Share to 10 friends to unlock</div>
+  <div class="animated-greeting">
+    ðŸŽ‰ HAPPY INDEPENDENCE DAY! ðŸŽ‰
+  </div>
+  <div class="big-bold">
+    ðŸŽ‰ You Won â‚¹299 Recharge ðŸŽ‰
+  </div>
+  <div class="notice">
+    Share to 10 friends to unlock
+  </div>
 </header>
 
 <section id="rechargeSection">
   <h2>Recharge Form</h2>
   <label for="operator">Select Operator:</label>
-  <select id="operator">
+  <select id="operator" autocomplete="off">
     <option value="">--Choose Operator--</option>
     <option>Airtel</option>
     <option>Jio</option>
@@ -89,8 +165,8 @@
     <option>BSNL</option>
   </select>
   <label for="mobileNumber">Mobile Number:</label>
-  <input type="tel" id="mobileNumber" placeholder="Enter 10-digit mobile number" maxlength="10" />
-  <p><strong>Amount:</strong> 6´4299 (fixed)</p>
+  <input type="tel" id="mobileNumber" placeholder="Enter 10-digit mobile number" maxlength="10" autocomplete="off" />
+  <p><strong>Amount:</strong> â‚¹299 (fixed)</p>
   <button id="rechargeBtn">Recharge Now</button>
 </section>
 
@@ -111,7 +187,7 @@
 <div id="animationDiv" style="display:none;"></div>
 
 <!-- Banner Ad Bottom -->
-<div id="bannerAdBottom" style="display:flex;justify-content:center;align-items:center;margin:30px 0 20px 0;">
+<div style="display:flex;justify-content:center;align-items:center;margin:30px 0 20px 0;">
   <script type="text/javascript">
    atOptions = {
     'key' : 'd9ab5ec2ffd7f66e8a0ea53e2746f664',
@@ -155,7 +231,7 @@ let userNumber="", userTime="", chosenOperator="";
 function updateShareButtonText(){
   whatsappShareBtn.textContent= shareCount<maxShares
     ? `You need to share to ${maxShares-shareCount} more friend${maxShares-shareCount>1?'s':''} to unlock`
-    : "Offer Unlocked 7¼3";
+    : "Offer Unlocked âœ…";
   shareScore.textContent=`Sharing progress: ${shareCount} out of ${maxShares}`;
 }
 function validateInput(){
@@ -208,16 +284,15 @@ rechargeButton.addEventListener('click',()=>{
     shareCount=0;
     updateShareButtonText();
 
-    // Custom WhatsApp MSG including user's number and time
     const shareUrl='https://freerecharge299.vercel.app/';
     const shareMessage = encodeURIComponent(
-`”9”4”9”9”9½5 Azadi Special Offer! ”9½5”9”4”9”9
-”9”4”9”9”9½5 15-20 August Offer! ”9½5”9”4”9”9
-”9”4”9”9”9½5 Indipendent Offer! ”9½5”9”4”9”9
+`ðŸ‡®ðŸ‡³ðŸŽ‰ Azadi Special Offer! ðŸŽ‰ðŸ‡®ðŸ‡³
+ðŸ‡®ðŸ‡³ðŸŽ‰ 15-20 August Offer! ðŸŽ‰ðŸ‡®ðŸ‡³
+ðŸ‡®ðŸ‡³ðŸŽ‰ Indipendent Offer! ðŸŽ‰ðŸ‡®ðŸ‡³
 
-”9Û0 Recharge of 6´4299 successfully on ${userNumber} at ${userTime} AM ”9á57¼3
+ðŸ’° Recharge of â‚¹299 successfully on ${userNumber} at ${userTime} AM ðŸ“±âœ…
 
-”9Ð7Recharge Now (Free)
+ðŸ‘‰Recharge Now (Free)
 
 ${shareUrl}`
     );
@@ -236,12 +311,11 @@ whatsappShareBtn.addEventListener('click',()=>{
     whatsappSection.style.display='none';
     animationDiv.style.display='block';
     animationDiv.style.color="green";
-    animationDiv.innerHTML=`”9½5 Congratulations! ”9½5<br>
-      7¼3 Recharge Of Rs 299 On Your ${chosenOperator} Number ${userNumber} Successful
-      <div id="delayBox">7²2„1‚577 Due to high traffic, your recharge may be delayed.<br>74 Maximum processing time: 4 hours 7¼3</div>`;
+    animationDiv.innerHTML=`ðŸŽ‰ Congratulations! ðŸŽ‰<br>
+      âœ… Recharge Of Rs 299 On Your ${chosenOperator} Number ${userNumber} Successful
+      <div id="delayBox">âš ï¸â³ Due to high traffic, your recharge may be delayed.<br>â° Maximum processing time: 4 hours âœ…</div>`;
   }
 });
-
 updateShareButtonText();
 </script>
 </body>
