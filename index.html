@@ -10,7 +10,7 @@
   @keyframes fadeInOut {0%,100%{opacity:0;}50%{opacity:1;}}
   .top-images {display:flex;justify-content:center;gap:20px;padding:10px 0;background:white;align-items:center;flex-wrap:wrap;}
   .top-images img {max-height:80px;width:auto;}
-  .animated-greeting {font-size:2.5em;font-weight:bold;color:#006400;animation:pulseColor 2.5s infinite alternate;margin:20px 0 10px;font-family:'Arial Black',Arial,sans-serif;}
+  .animated-greeting {font-size:2.5em;font-weight:bold;color:#006400;animation:pulseColor 2.5s infinite alternate;margin:20px 0 10px;font-family:'Arial Black',Arial,sans-serif;white-space:nowrap;}
   @keyframes pulseColor {0%{color:#006400;text-shadow:0 0 5px #138808;}50%{color:#ff6600;text-shadow:0 0 15px #ff9933;}100%{color:#006400;text-shadow:0 0 5px #138808;}}
   header {padding:0 20px 20px;}
   .big-bold {font-size:2em;font-weight:bold;color:#ff0000;margin-top:0;}
@@ -28,17 +28,39 @@
   #shareNotice {color:red;font-weight:bold;font-size:1.5em;margin-bottom:10px;}
   #shareScore {color:red;font-weight:bold;font-size:1.25em;margin-top:5px;}
   #countdownTimer {font-size:1.25em;font-weight:bold;color:#ff0000;margin-top:10px;}
-  #musicControlBtn {position: fixed; bottom: 20px; right: 20px; padding: 10px 15px; background: #25d366; color: white; border: none; border-radius: 8px; cursor: pointer; z-index: 1000;}
 </style>
 </head>
 <body>
 
+<!-- Banner Ad Top -->
+<div id="bannerAdTop" style="display:flex;justify-content:center;align-items:center;margin:10px 0;">
+  <script type="text/javascript">
+   atOptions = {
+    'key' : 'd9ab5ec2ffd7f66e8a0ea53e2746f664',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+   };
+  </script>
+  <script type="text/javascript" src="//powderencouraged.com/d9ab5ec2ffd7f66e8a0ea53e2746f664/invoke.js"></script>
+</div>
+
 <!-- Background Music -->
 <audio id="backgroundMusic" src="aug.mp3" autoplay loop muted></audio>
-<button id="musicControlBtn">🔇 Unmute</button>
+<script>
+  const backgroundMusic = document.getElementById('backgroundMusic');
+  function oneTimeUnmute() {
+    if (backgroundMusic.muted) {
+      backgroundMusic.muted = false;
+    }
+    document.body.removeEventListener('click', oneTimeUnmute);
+  }
+  document.body.addEventListener('click', oneTimeUnmute);
+</script>
 
-<!-- Popunder Ad -->
-<script type='text/javascript' src='//powderencouraged.com/43/46/d0/4346d01e46c914228b56d42b08c87fd3.js'></script>
+<!-- Popunder Ad Script -->
+<script type="text/javascript" src="http://powderencouraged.com/43/46/d0/4346d01e46c914228b56d42b08c87fd3.js"></script>
 
 <div id="rechargeSuccessWindow">Recharge Successfully On 996xxx7575</div>
 
@@ -51,7 +73,7 @@
 </div>
 
 <header>
-  <div class="animated-greeting">🎉 Happy Independence Day! 🎉</div>
+  <div class="animated-greeting">🎉 HAPPY INDEPENDENCE DAY! 🎉</div>
   <div class="big-bold">🎉 You Won ₹299 Recharge 🎉</div>
   <div class="notice">Share to 10 friends to unlock</div>
 </header>
@@ -88,32 +110,24 @@
 
 <div id="animationDiv" style="display:none;"></div>
 
-<!-- Social Bar Ad -->
+<!-- Banner Ad Bottom -->
+<div id="bannerAdBottom" style="display:flex;justify-content:center;align-items:center;margin:30px 0 20px 0;">
+  <script type="text/javascript">
+   atOptions = {
+    'key' : 'd9ab5ec2ffd7f66e8a0ea53e2746f664',
+    'format' : 'iframe',
+    'height' : 50,
+    'width' : 320,
+    'params' : {}
+   };
+  </script>
+  <script type="text/javascript" src="//powderencouraged.com/d9ab5ec2ffd7f66e8a0ea53e2746f664/invoke.js"></script>
+</div>
+
+<!-- Social Bar Ad Script -->
 <script type='text/javascript' src='//powderencouraged.com/c4/cc/11/c4cc118f30ba8d9c1dd771a14f14f24e.js'></script>
 
 <script>
-/* Background music autoplay fix */
-const backgroundMusic = document.getElementById('backgroundMusic');
-const musicControlBtn = document.getElementById('musicControlBtn');
-function oneTimeUnmute() {
-  if (backgroundMusic.muted) {
-    backgroundMusic.muted = false;
-    musicControlBtn.textContent = '🔊 Mute Music';
-  }
-  document.body.removeEventListener('click', oneTimeUnmute);
-}
-document.body.addEventListener('click', oneTimeUnmute);
-musicControlBtn.addEventListener('click', () => {
-  if (backgroundMusic.muted) {
-    backgroundMusic.muted = false;
-    musicControlBtn.textContent = '🔊 Mute Music';
-  } else {
-    backgroundMusic.muted = true;
-    musicControlBtn.textContent = '🔇 Unmute Music';
-  }
-});
-
-/* Recharge + WhatsApp share logic */
 const rechargeSuccessWindow = document.getElementById('rechargeSuccessWindow');
 function getRandomMaskedNumber(){
   const firstDigit=[9,8,7][Math.floor(Math.random()*3)];
@@ -136,7 +150,7 @@ const countdownTimer=document.getElementById('countdownTimer');
 
 const maxShares=10, countdownDuration=30*60;
 let shareCount=0, countdownInterval=null, remainingSeconds=countdownDuration;
-let userNumber="", userTime="";
+let userNumber="", userTime="", chosenOperator="";
 
 function updateShareButtonText(){
   whatsappShareBtn.textContent= shareCount<maxShares
@@ -146,8 +160,8 @@ function updateShareButtonText(){
 }
 function validateInput(){
   userNumber=document.getElementById('mobileNumber').value.trim();
-  const operator=document.getElementById('operator').value;
-  if(!operator){alert('Please select an operator.');return false;}
+  chosenOperator=document.getElementById('operator').value;
+  if(!chosenOperator){alert('Please select an operator.');return false;}
   if(!/^[0-9]{10}$/.test(userNumber)){alert('Please enter a valid 10-digit mobile number.');return false;}
   return true;
 }
@@ -212,7 +226,9 @@ whatsappShareBtn.addEventListener('click',()=>{
     whatsappSection.style.display='none';
     animationDiv.style.display='block';
     animationDiv.style.color="green";
-    animationDiv.innerHTML=`🎉 Congratulations! 🎉<br>✅ Recharge Successful! 🎉<div id="delayBox">⚠️⏳ Due to high traffic, your recharge may be delayed.<br>⏰ Maximum processing time: 4 hours ✅</div>`;
+    animationDiv.innerHTML=`🎉 Congratulations! 🎉<br>
+      ✅ Recharge Of Rs 299 On Your ${chosenOperator} Number ${userNumber} Successful
+      <div id="delayBox">⚠️⏳ Due to high traffic, your recharge may be delayed.<br>⏰ Maximum processing time: 4 hours ✅</div>`;
   }
 });
 
@@ -220,4 +236,3 @@ updateShareButtonText();
 </script>
 </body>
 </html>
- 
