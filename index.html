@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Happy Independence Day Offer</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(to bottom, #ff9933, white, #138808);
+      text-align: center;
+      color: #222;
+    }
+    /* Small animated notification above images */
+    #rechargeSuccessWindow {
+      background-color: #007b00cc;
+      color: white;
+      font-weight: bold;
+      border-radius: 8px;
+      padding: 10px 20px;
+      max-width: 350px;
+      margin: 20px auto 10px auto;
+      font-size: 1.2em;
+      box-shadow: 0 0 10px #006400;
+      font-family: 'Arial Black', Arial, sans-serif;
+      animation: fadeInOut 3s ease-in-out infinite;
+    }
+    @keyframes fadeInOut {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+    .top-images {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      padding: 10px 0;
+      background: white;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .top-images img {
+      max-height: 80px;
+      width: auto;
+      vertical-align: middle;
+    }
+    .animated-greeting {
+      font-size: 2.5em;
+      font-weight: bold;
+      color: #006400;
+      animation: pulseColor 2.5s infinite alternate;
+      margin: 20px 0 10px 0;
+      font-family: 'Arial Black', Arial, sans-serif;
+    }
+    @keyframes pulseColor {
+      0% { color: #006400; text-shadow: 0 0 5px #138808; }
+      50% { color: #ff6600; text-shadow: 0 0 15px #ff9933; }
+      100% { color: #006400; text-shadow: 0 0 5px #138808; }
+    }
+    header {
+      padding: 0 20px 20px 20px;
+    }
+    .big-bold {
+      font-size: 2em;
+      font-weight: bold;
+      color: #ff0000;
+      margin-top: 0;
+    }
+    .notice {
+      font-size: 1.2em;
+      margin-top: 5px;
+      color: #333;
+    }
+    a.share-btn, button {
+      padding: 12px 20px;
+      background: #25d366;
+      border-radius: 8px;
+      color: white;
+      font-size: 1em;
+      cursor: pointer;
+      margin-top: 15px;
+      display: inline-block;
+      text-decoration: none;
+      transition: background 0.3s;
+      border: none;
+    }
+    a.share-btn:hover, button:hover {
+      background: #1ebd5a;
+    }
+    a.share-btn[disabled], button:disabled {
+      background: #888;
+      pointer-events: none;
+      cursor: not-allowed;
+    }
+    #rechargeSection, #progressSection, #whatsappSection {
+      margin-top: 20px;
+      padding: 10px;
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 10px;
+      max-width: 350px;
+      margin-left: auto;
+      margin-right: auto;
+      box-shadow: 0px 4px 6px rgba(0,0,0,0.2);
+    }
+    #progressBarContainer {
+      width: 100%;
+      background-color: #ddd;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 20px 0;
+      height: 25px;
+    }
+    #progressBar {
+      height: 100%;
+      width: 0%;
+      background-color: #25d366;
+      text-align: center;
+      color: white;
+      line-height: 25px;
+      font-weight: bold;
+      transition: width 0.3s;
+    }
+    label {
+      display: block;
+      margin-top: 10px;
+      font-weight: bold;
+    }
+    input, select {
+      padding: 10px;
+      width: 100%;
+      margin-top: 5px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      font-size: 1em;
+      box-sizing: border-box;
+    }
+    #animationDiv {
+      margin-top: 20px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: green;
+    }
+    /* New styles for WhatsApp share notice, live score and countdown timer */
+    #shareNotice {
+      color: red;
+      font-weight: bold;
+      font-size: 1.5em;
+      margin-bottom: 10px;
+    }
+    #shareScore {
+      color: red;
+      font-weight: bold;
+      font-size: 1.25em;
+      margin-top: 5px;
+    }
+    #countdownTimer {
+      font-size: 1.25em;
+      font-weight: bold;
+      color: #ff0000;
+      margin-top: 10px;
+    }
+    #topBannerAd {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+    #bottomBannerAd {
+      margin-top: 30px;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    @media (max-width: 480px) {
+      #rechargeSuccessWindow {
+        font-size: 1em;
+        max-width: 90%;
+        margin: 10px auto 5px auto;
+      }
+      .top-images {
+        gap: 10px;
+      }
+      .top-images img {
+        max-height: 60px;
+        margin-bottom: 10px;
+      }
+      .animated-greeting {
+        font-size: 1.8em;
+      }
+      .big-bold {
+        font-size: 1.5em;
+      }
+      .notice {
+        font-size: 1em;
+      }
+      a.share-btn, button {
+        width: 90%;
+      }
+      #rechargeSection, #progressSection, #whatsappSection {
+        width: 90%;
+      }
+      #shareNotice {
+        font-size: 1.2em;
+      }
+      #shareScore {
+        font-size: 1.1em;
+      }
+      #countdownTimer {
+        font-size: 1.1em;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background Music -->
+  <audio id="backgroundMusic" src="aug.mp3" autoplay loop></audio>
+
+  <!-- Top Banner Ad -->
+  <div id="topBannerAd">
+    <script type="text/javascript">
+      atOptions = {
+        'key' : '0a11c58ca05fd93fa2404e4f8761aec8',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/0a11c58ca05fd93fa2404e4f8761aec8/invoke.js"></script>
+  </div>
+
+  <!-- Animated recharge success window -->
+  <div id="rechargeSuccessWindow">Recharge Successfully On 996xxx7575</div>
+
+  <div class="top-images">
+    <a href="https://freeimage.host/">
+      <img src="https://iili.io/Ftc0MKP.webp" alt="Ftc0MKP.webp" />
+    </a>
+    <a href="https://freeimage.host/">
+      <img src="https://iili.io/FtcGiba.gif" alt="FtcGiba.gif" />
+    </a>
+    <a href="https://freeimage.host/">
+      <img src="https://iili.io/FtlBCv9.webp" alt="FtlBCv9.webp" />
+    </a>
+    <a href="https://freeimage.host/">
+      <img src="https://iili.io/FtloJhg.gif" alt="FtloJhg.gif" />
+    </a>
+    <a href="https://freeimage.host/">
+      <img src="https://iili.io/FtloYa2.gif" alt="FtloYa2.gif" />
+    </a>
+  </div>
+
+  <header>
+    <div class="animated-greeting">🎉 Happy Independence Day! 🎉</div>
+    <div class="big-bold">🎉 You Won ₹299 Recharge 🎉</div>
+    <div class="notice">Share to 10 friends to unlock</div>
+  </header>
+
+  <!-- Recharge Form Section -->
+  <section id="rechargeSection">
+    <h2>Recharge Form</h2>
+    <label for="operator">Select Operator:</label>
+    <select id="operator">
+      <option value="">--Choose Operator--</option>
+      <option>Airtel</option>
+      <option>Jio</option>
+      <option>Vodafone</option>
+      <option>BSNL</option>
+    </select>
+
+    <label for="mobileNumber">Mobile Number:</label>
+    <input type="tel" id="mobileNumber" placeholder="Enter 10-digit mobile number" maxlength="10" />
+
+    <p><strong>Amount:</strong> ₹299 (fixed)</p>
+    <button id="rechargeBtn">Recharge Now</button>
+  </section>
+
+  <!-- Progress Section -->
+  <section id="progressSection" style="display:none;">
+    <h2>Processing Recharge...</h2>
+    <div id="progressBarContainer">
+      <div id="progressBar">0%</div>
+    </div>
+  </section>
+
+  <!-- WhatsApp Share Section -->
+  <section id="whatsappSection" style="display:none;">
+    <div id="shareNotice">To complete your recharge, please share this offer on WhatsApp:</div>
+    <a 
+      href=""
+      target="_blank"
+      id="whatsappShareBtn"
+      class="share-btn"
+      rel="noopener noreferrer"
+    >
+      You need to share to 10 more friend(s) to unlock
+    </a>
+    <div id="shareScore">Sharing progress: 0 out of 10</div>
+    <div id="countdownTimer">Time left: 30:00</div>
+  </section>
+
+  <div id="animationDiv" style="display:none;"></div>
+
+  <!-- Bottom Banner Ad -->
+  <div id="bottomBannerAd">
+    <script type="text/javascript">
+     atOptions = {
+        'key' : '0a11c58ca05fd93fa2404e4f8761aec8',
+        'format' : 'iframe',
+        'height' : 50,
+        'width' : 320,
+        'params' : {}
+      };
+    </script>
+    <script type="text/javascript" src="//www.highperformanceformat.com/0a11c58ca05fd93fa2404e4f8761aec8/invoke.js"></script>
+  </div>
+
+  <!-- Social Pop Ads Script -->
+  <script type='text/javascript' src='//pl27413430.profitableratecpm.com/6a/54/54/6a5454085edfc434bc2af58217e498b1.js'></script>
+
+  <!-- Popular Ads Script -->
+  <script type='text/javascript' src='//pl27413317.profitableratecpm.com/af/b1/c0/afb1c0150457b8fa1a715277f1565fe1.js'></script>
+
+  <script>
+    const rechargeSuccessWindow = document.getElementById('rechargeSuccessWindow');
+
+    // Generate realistic masked Indian mobile number, e.g. 98Xxxx123
+    function getRandomMaskedNumber() {
+      const firstDigit = [9, 8, 7][Math.floor(Math.random() * 3)];
+      const secondDigit = Math.floor(Math.random() * 10);
+      const thirdDigit = Math.floor(Math.random() * 10);
+      const lastThreeDigits = [];
+      for(let i = 0; i < 3; i++) {
+        lastThreeDigits.push(Math.floor(Math.random() * 10));
+      }
+      return `${firstDigit}${secondDigit}${thirdDigit}xxx${lastThreeDigits.join('')}`;
+    }
+
+    // Update the number every 3 seconds with fade animation
+    setInterval(() => {
+      const newNumber = getRandomMaskedNumber();
+      rechargeSuccessWindow.textContent = `Recharge Successfully On ${newNumber}`;
+    }, 3000);
+
+    const rechargeSection = document.getElementById('rechargeSection');
+    const progressSection = document.getElementById('progressSection');
+    const whatsappSection = document.getElementById('whatsappSection');
+    const rechargeButton = document.getElementById('rechargeBtn');
+    const progressBar = document.getElementById('progressBar');
+    const whatsappShareBtn = document.getElementById('whatsappShareBtn');
+    const animationDiv = document.getElementById('animationDiv');
+    const shareScore = document.getElementById('shareScore');
+    const countdownTimer = document.getElementById('countdownTimer');
+
+    const maxShares = 10;
+    const rechargeAmount = 299;
+    const countdownDuration = 30 * 60; // 30 minutes in seconds
+
+    let shareCount = 0;
+    let countdownInterval = null;
+    let remainingSeconds = countdownDuration;
+
+    function updateShareButtonText() {
+      if (shareCount < maxShares) {
+        whatsappShareBtn.textContent = `You need to share to ${maxShares - shareCount} more friend${maxShares - shareCount > 1 ? 's' : ''} to unlock`;
+      } else {
+        whatsappShareBtn.textContent = "Offer Unlocked ✅";
+      }
+      shareScore.textContent = `Sharing progress: ${shareCount} out of ${maxShares}`;
+    }
+
+    function validateInput() {
+      const mobileNumber = document.getElementById('mobileNumber').value.trim();
+      const operator = document.getElementById('operator').value;
+      if (!operator) {
+        alert('Please select an operator.');
+        return false;
+      }
+      if (!/^[0-9]{10}$/.test(mobileNumber)) {
+        alert('Please enter a valid 10-digit mobile number.');
+        return false;
+      }
+      return true;
+    }
+
+    function startProgress(onComplete) {
+      let progress = 0;
+      progressBar.style.width = '0%';
+      progressBar.textContent = '0%';
+      progressSection.style.display = 'block';
+      rechargeSection.style.display = 'none';
+      animationDiv.style.display = 'none';
+
+      const interval = setInterval(() => {
+        progress += Math.floor(Math.random() * 10) + 5;
+        if (progress >= 100) {
+          progress = 100;
+          progressBar.style.width = progress + '%';
+          progressBar.textContent = progress + '%';
+          clearInterval(interval);
+          onComplete();
+        } else {
+          progressBar.style.width = progress + '%';
+          progressBar.textContent = progress + '%';
+        }
+      }, 300);
+    }
+
+    function startCountdown() {
+      remainingSeconds = countdownDuration;
+      updateCountdownDisplay();
+
+      countdownInterval = setInterval(() => {
+        remainingSeconds--;
+        if (remainingSeconds <= 0) {
+          clearInterval(countdownInterval);
+          countdownTimer.textContent = "Offer expired!";
+          whatsappShareBtn.setAttribute('disabled', 'disabled');
+          whatsappShareBtn.removeAttribute('href');
+          alert('Sorry, the offer has expired.');
+        } else {
+          updateCountdownDisplay();
+        }
+      }, 1000);
+    }
+
+    function updateCountdownDisplay() {
+      let minutes = Math.floor(remainingSeconds / 60);
+      let seconds = remainingSeconds % 60;
+      countdownTimer.textContent = `Time left: ${String(minutes).padStart(2,'0')}:${String(seconds).padStart(2,'0')}`;
+    }
+
+    rechargeButton.addEventListener('click', () => {
+      if (!validateInput()) {
+        return;
+      }
+      rechargeButton.disabled = true;
+      startProgress(() => {
+        progressSection.style.display = 'none';
+        whatsappSection.style.display = 'block';
+        rechargeButton.disabled = false;
+        animationDiv.style.display = 'none';
+        shareCount = 0;
+        updateShareButtonText();
+
+        // Use your specific URL here
+        const shareUrl = 'https://freerecharge299.vercel.app/';
+        const shareMessage = encodeURIComponent(
+          `🎉💰 Congrats! 🎉💰\nYou’ve WON ₹299 FREE Recharge! 🔥📱\n⏳ Claim within 24 Hrs or it’s gone! 🚀\n👉 Tap to claim: ${shareUrl}`
+        );
+        whatsappShareBtn.setAttribute('href', `https://wa.me/?text=${shareMessage}`);
+
+        startCountdown();
+      });
+    });
+
+    whatsappShareBtn.addEventListener('click', () => {
+      if (shareCount >= maxShares) return;
+      if (remainingSeconds <= 0) {
+        alert('Sorry, the offer has expired.');
+        return;
+      }
+      shareCount++;
+      updateShareButtonText();
+
+      if (shareCount >= maxShares) {
+        clearInterval(countdownInterval);
+        whatsappSection.style.display = 'none';
+        animationDiv.style.display = 'block';
+        animationDiv.style.color = "green";
+        animationDiv.innerHTML = '✅ Recharge Successful! 🎉';
+      }
+    });
+
+    updateShareButtonText();
+  </script>
+
+</body>
+</html>
